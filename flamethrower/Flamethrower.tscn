@@ -1,0 +1,140 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://flamethrower/ParticlesWithColisions.gd" type="Script" id=1]
+[ext_resource path="res://flamethrower/Area2D.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 0.1
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+
+[node name="Flamethrower" type="Node2D"]
+
+[node name="ParticlesWithColisions" type="Node2D" parent="."]
+script = ExtResource( 1 )
+magnitude = 50
+velocity_randomness = 0.05
+lifetime = 4.5
+lifetime_randomness = 0.2
+frames_per_particle = 2
+
+[node name="Particles" type="Node2D" parent="ParticlesWithColisions"]
+position = Vector2( 348, 209 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 104.132, 122.861 )
+script = ExtResource( 2 )
+collision_color = Color( 0.764706, 0.207843, 0.207843, 1 )
+default_color = Color( 0.105882, 0.498039, 0.631373, 1 )
+
+[node name="Timer" type="Timer" parent="Area2D"]
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 20, 20 )
+shape = SubResource( 1 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 231.488, 394.804 )
+script = ExtResource( 2 )
+collision_color = Color( 0.764706, 0.207843, 0.207843, 1 )
+default_color = Color( 0.105882, 0.498039, 0.631373, 1 )
+
+[node name="Timer" type="Timer" parent="Area2D2"]
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="Area2D2"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( 20, 20 )
+shape = SubResource( 1 )
+
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2( 540.14, 87.6509 )
+script = ExtResource( 2 )
+collision_color = Color( 0.764706, 0.207843, 0.207843, 1 )
+default_color = Color( 0.105882, 0.498039, 0.631373, 1 )
+
+[node name="Timer" type="Timer" parent="Area2D3"]
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="Area2D3"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2( 20, 20 )
+shape = SubResource( 1 )
+
+[node name="Area2D4" type="Area2D" parent="."]
+position = Vector2( 545.384, 311.648 )
+script = ExtResource( 2 )
+collision_color = Color( 0.764706, 0.207843, 0.207843, 1 )
+default_color = Color( 0.105882, 0.498039, 0.631373, 1 )
+
+[node name="Timer" type="Timer" parent="Area2D4"]
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="Area2D4"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2( 20, 20 )
+shape = SubResource( 1 )
+
+[node name="Area2D5" type="Area2D" parent="."]
+position = Vector2( 385.814, 42.7017 )
+script = ExtResource( 2 )
+collision_color = Color( 0.764706, 0.207843, 0.207843, 1 )
+default_color = Color( 0.105882, 0.498039, 0.631373, 1 )
+
+[node name="Timer" type="Timer" parent="Area2D5"]
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="Area2D5"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+position = Vector2( 20, 20 )
+shape = SubResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_entered"]
+[connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_reset"]
+[connection signal="area_entered" from="Area2D2" to="Area2D2" method="_entered"]
+[connection signal="timeout" from="Area2D2/Timer" to="Area2D2" method="_reset"]
+[connection signal="area_entered" from="Area2D3" to="Area2D3" method="_entered"]
+[connection signal="timeout" from="Area2D3/Timer" to="Area2D3" method="_reset"]
+[connection signal="area_entered" from="Area2D4" to="Area2D4" method="_entered"]
+[connection signal="timeout" from="Area2D4/Timer" to="Area2D4" method="_reset"]
+[connection signal="area_entered" from="Area2D5" to="Area2D5" method="_entered"]
+[connection signal="timeout" from="Area2D5/Timer" to="Area2D5" method="_reset"]
